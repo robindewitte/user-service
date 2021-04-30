@@ -1,0 +1,24 @@
+image: mcr.microsoft.com/dotnet/core/sdk:latest
+
+stages:
+    - build
+    - test
+
+before_script:
+    - "cd twatter-userservice"
+    - "dotnet restore"
+    
+build:
+    stage: build
+    tags:
+        - ci
+    script:
+        - "dotnet build"
+    artifacts:
+      paths:
+        - bin/
+
+test:
+    stage: test
+    script: 
+        - "dotnet test"
