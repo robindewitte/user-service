@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+    pkg:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: userservice
+        ports:
+            - "0.0.0.0:5002:5002"
+        networks:
+            - twatter-network
+
+networks:
+    twatter-network:
+        external: true
