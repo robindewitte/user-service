@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\twatter-userservice"
+    "\\twatter-userservice",
+    "\\twatter-userservice\\Properties"
   ],
-  "SelectedNode": "\\twatter-userservice\\Dockerfile",
+  "SelectedNode": "\\twatter-userservice\\Properties\\launchSettings.json",
   "PreviewInSolutionExplorer": false
 }
