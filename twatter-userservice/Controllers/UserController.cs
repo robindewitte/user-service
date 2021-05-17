@@ -39,7 +39,7 @@ namespace twatter_userservice.Controllers
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new[] {
-            new Claim(JwtRegisteredClaimNames.Sub, loginAttempt.Username)         
+            new Claim(JwtRegisteredClaimNames.Sub, loginAttempt.Username)
             };
 
 
@@ -63,7 +63,7 @@ namespace twatter_userservice.Controllers
             if(fetchFromDB != null && Encryptor.validatePassword(loginDTO.Password, fetchFromDB.Password))
             {
                 string token = GenerateJSONWebToken(loginDTO);
-                return Json(token);
+                return token;
             }
             else
             {
@@ -97,6 +97,7 @@ namespace twatter_userservice.Controllers
             }
             return Json(new RegisterResponseDTO("FOUT! De ingevoerde gegevens voldoen niet aan de eisen."));
         }
+
 
         public static bool ValidateEmail(string email)
         {
