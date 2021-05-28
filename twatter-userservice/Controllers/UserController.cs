@@ -25,7 +25,7 @@ namespace twatter_userservice.Controllers
     {
         private readonly UserContext _context;
 
-        private IConfiguration _config;
+        private readonly IConfiguration _config;
 
         public UserController(UserContext context, IConfiguration config)
         {
@@ -59,8 +59,8 @@ namespace twatter_userservice.Controllers
         {
             Console.WriteLine("binnen");
             //hardcoded for now
-            User fetchFromDB = await _context.Users.Where(b => b.Username == loginDTO.Username).SingleAsync(); ;
-            if(fetchFromDB != null && Encryptor.validatePassword(loginDTO.Password, fetchFromDB.Password))
+            User fetchFromDB = await _context.Users.Where(b => b.Username == loginDTO.Username).SingleAsync();
+            if(fetchFromDB != null && Encryptor.ValidatePassword(loginDTO.Password, fetchFromDB.Password))
             {
                 string token = GenerateJSONWebToken(loginDTO);
                 return token;
@@ -81,7 +81,7 @@ namespace twatter_userservice.Controllers
             {
                 User user = new User();
                 user.Username = registerDTO.Username;
-                user.Password = Encryptor.encryptPassword(registerDTO.Password);
+                user.Password = Encryptor.EncryptPassword(registerDTO.Password);
                 user.EmailAdress = registerDTO.EmailAdress;
                 if(_context.Users.Any(o => o.Username == user.Username) || _context.Users.Any(o => o.EmailAdress == user.EmailAdress))
                 {

@@ -2,11 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\.github",
-    "\\twatter-userservice\\Controllers",
-    "\\twatter-userservice\\Datamodels",
-    "\\twatter-userservice\\Encryption",
-    "\\twatter-userservice\\Properties"
+    "\\TestUserservice",
+    "\\twatter-userservice"
   ],
-  "SelectedNode": "\\TestUserservice",
+  "SelectedNode": "\\twatter-userservice.sln",
   "PreviewInSolutionExplorer": false
 }
