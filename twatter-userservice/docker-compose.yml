@@ -6,7 +6,7 @@ services:
             dockerfile: Dockerfile
         container_name: userservice
         ports:
-            - "0.0.0.0:5002:5002"
+            - "0.0.0.0:5003:5003"
         networks:
             - twatter-network
 
