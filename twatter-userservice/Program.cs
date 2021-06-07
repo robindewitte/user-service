@@ -23,7 +23,7 @@ namespace twatter_userservice
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>()
-                    .UseUrls("http://*:8123");
+                    .UseUrls("http://*:5003");
                 });
     }
 }
