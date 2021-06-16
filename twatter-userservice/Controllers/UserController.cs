@@ -16,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Prometheus;
 
 namespace twatter_userservice.Controllers
 {
@@ -29,8 +30,11 @@ namespace twatter_userservice.Controllers
 
         public UserController(UserContext context, IConfiguration config)
         {
+            lastone = DateTime.Now;
+            amountofWrongAttempts = 0;
             _context = context;
             _config = config;
+            totalTime = 0;
         }
 
         private string GenerateJSONWebToken(LoginDTO loginAttempt)
@@ -52,6 +56,10 @@ namespace twatter_userservice.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+          private static int amountofWrongAttempts;
+          private static double totalTime;
+          private static DateTime lastone;
+
         [AllowAnonymous]
         [HttpPost]
         [Route("login")]
@@ -67,6 +75,18 @@ namespace twatter_userservice.Controllers
             }
             else
             {
+                amountofWrongAttempts++;
+                TimeSpan difference = DateTime.Now.Subtract(lastone);
+                totalTime = totalTime + difference.TotalSeconds;
+                if(totalTime.TotalSeconds > 30 && amountofWrongAttempts > 10)
+                {
+                    //theoretische email service hier
+                    return "nu zou er een alert in de mail komen van een dictionary attack of ddos"
+                }
+                else if( totalTime.TotalSeconds > 30)
+                {
+                    totalTime = 0;
+                }
                 return "Verkeerd";
             }           
         }

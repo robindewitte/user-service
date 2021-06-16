@@ -3,8 +3,9 @@
     "",
     "\\.github",
     "\\TestUserservice",
-    "\\twatter-userservice"
+    "\\twatter-userservice",
+    "\\twatter-userservice\\Controllers"
   ],
-  "SelectedNode": "\\twatter-userservice.sln",
+  "SelectedNode": "\\twatter-userservice\\Startup.cs",
   "PreviewInSolutionExplorer": false
 }

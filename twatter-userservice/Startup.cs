@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Prometheus;
 
 namespace twatter_userservice
 {
@@ -61,6 +62,7 @@ namespace twatter_userservice
             app.UseAuthentication();
 
             app.UseAuthorization();
+            app.UseMetricServer();
 
             app.UseEndpoints(endpoints =>
             {
