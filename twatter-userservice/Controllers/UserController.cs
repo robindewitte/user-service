@@ -78,12 +78,12 @@ namespace twatter_userservice.Controllers
                 amountofWrongAttempts++;
                 TimeSpan difference = DateTime.Now.Subtract(lastone);
                 totalTime = totalTime + difference.TotalSeconds;
-                if(totalTime.TotalSeconds > 30 && amountofWrongAttempts > 10)
+                if(totalTime > 30 && amountofWrongAttempts > 10)
                 {
                     //theoretische email service hier
                     return "nu zou er een alert in de mail komen van een dictionary attack of ddos";
                 }
-                else if( totalTime.TotalSeconds > 30)
+                else if( totalTime > 30)
                 {
                     totalTime = 0;
                 }
