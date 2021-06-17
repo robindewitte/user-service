@@ -17,6 +17,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Prometheus;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+using Newtonsoft.Json;
 
 namespace twatter_userservice.Controllers
 {
@@ -59,6 +62,7 @@ namespace twatter_userservice.Controllers
           private static int amountofWrongAttempts;
           private static double totalTime;
           private static DateTime lastone;
+
 
         [AllowAnonymous]
         [HttpPost]
